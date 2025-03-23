@@ -1,38 +1,32 @@
 package br.com.franca.bankaccount.entrypoint.rest.request;
 
-import br.com.franca.bankaccount.core.domain.CpfOrCnpj;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.UUID;
 
 public record NewBankAccountRequest(
-        @NotNull( message = "Balance cannot be null")
+        // gerado automaticamente quando nao informado
+        UUID bankAccountId,
+
+        // gerado automaticamente quando nao informado
+        String accountNumber,
+
+        @NotEmpty(message = "AccountType cannot be null")
+        String accountType,
+
         BigDecimal balance,
 
-        @NotBlank(message = "Nome do titular é obrigatório")
-        String titular,
+        // criar uma anotação parecida com a @Min porem para numeros decimais ou BIgDecimal
+        @NotNull
+        BigDecimal dailyWithdrawalLimit,
 
-        @NotBlank(message = "CPF/CNPJ é obrigatório")
-        @CpfOrCnpj
-        String document,
+        @NotNull(message = "AccountHolderId cannot be null")
+        UUID accountHolderId,
 
-        @NotBlank(message = "E-mail é obrigatório")
-        @Email(message = "E-mail inválido")
-        String email,
-
-        @NotBlank(message = "Telefone é obrigatório")
-        @Pattern(regexp = "\\d{10,11}", message = "Telefone deve ter 10 ou 11 dígitos")
-        String telefone,
-
-        @NotNull(message = "Renda mensal é obrigatória")
-        @Positive(message = "Renda mensal deve ser um valor positivo")
-        BigDecimal rendaMensal,
-
-        @NotBlank(message = "Endereço é obrigatório")
-        String endereco,
-
-        @NotBlank(message = "Tipo de conta é obrigatório")
-        @Pattern(regexp = "corrente|poupanca|salario", message = "Tipo de conta deve ser: corrente, poupanca ou salario")
-        String tipoConta
+        List<UUID> transactionIds
 ) {
 }

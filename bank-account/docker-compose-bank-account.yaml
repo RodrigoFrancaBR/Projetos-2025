@@ -1,0 +1,24 @@
+# docker compose -f docker-compose-local.yaml up -d
+version: '3.9'
+
+services:
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8082:8080
+
+  mysql:
+    image: mysql:8.0.26
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: "bank_account_db"
+    ports:
+      - '3306:3306'
+    volumes:
+      - './data/mysql/backup/bank_account_db:/var/lib/mysql'
+      - './data/mysql/backup/bank_account_db:/docker-entrypoint-initdb.d'

@@ -30,9 +30,9 @@ public class BankAccountController implements BankAccountApi {
 
     @PostMapping
     @Override
-    public ResponseEntity<Void> createAccount(@RequestBody @Valid final NewBankAccountRequest request) {
+    public ResponseEntity<Void> openAccount(@RequestBody @Valid final NewBankAccountRequest request) {
         final var domain = mapper.toTarget(request);
-        port.createAccountCore(domain);
+        port.openAccountCore(domain);
         return ResponseEntity
                 .created(URI.create("/v1/account/" + 123))
                 .build();

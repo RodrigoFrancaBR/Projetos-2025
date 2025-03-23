@@ -1,6 +1,6 @@
 package br.com.franca.bankaccount.core.ports.in;
 
-import br.com.franca.bankaccount.core.domain.entity.BankAccount;
+import br.com.franca.bankaccount.core.domain.entity.bankaccount.BankAccount;
 
 import java.math.BigDecimal;
 
@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public interface IBankAccountCorePort {
 
-    void createAccountCore(BankAccount domain);
+    void openAccountCore(BankAccount domain);
 
     void withdrawal(Long id, BigDecimal amount);
 }

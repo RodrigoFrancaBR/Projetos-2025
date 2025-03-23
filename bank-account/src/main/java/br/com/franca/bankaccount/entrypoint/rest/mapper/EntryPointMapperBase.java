@@ -8,5 +8,5 @@ public interface EntryPointMapperBase<S, T> {
 
     T toTarget(S source);
 
-    S toSource(T target);
+    // S toSource(T target);
 }

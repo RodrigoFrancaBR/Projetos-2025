@@ -1,6 +1,6 @@
 package br.com.franca.bankaccount.core.ports.out;
 
-import br.com.franca.bankaccount.core.domain.entity.BankAccount;
+import br.com.franca.bankaccount.core.domain.entity.bankaccount.BankAccount;
 
 public interface BankAccountRepositoryPort {
 

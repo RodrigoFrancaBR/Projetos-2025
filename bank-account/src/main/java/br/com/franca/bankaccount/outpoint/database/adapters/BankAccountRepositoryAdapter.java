@@ -1,6 +1,6 @@
 package br.com.franca.bankaccount.outpoint.database.adapters;
 
-import br.com.franca.bankaccount.core.domain.entity.BankAccount;
+import br.com.franca.bankaccount.core.domain.entity.bankaccount.BankAccount;
 import br.com.franca.bankaccount.core.ports.out.BankAccountRepositoryPort;
 import br.com.franca.bankaccount.outpoint.database.BankAccountRepository;
 import br.com.franca.bankaccount.outpoint.database.mapper.BankAccountDataBaseMapper;
@@ -21,14 +21,15 @@ public class BankAccountRepositoryAdapter implements BankAccountRepositoryPort {
 
     @Override
     public void updateAccount(BankAccount domain) {
-        final var entity = mapper.toTarget(domain);
-        final var savedEntity = repository.save(entity);
+        //final var entity = mapper.toTarget(domain);
+        //final var savedEntity = repository.save(entity);
     }
 
     @Override
     public BankAccount findAccount(Long id) {
-        return repository.findById(id)
-                .map(mapper::toSource)
-                .orElseThrow(() -> new IllegalArgumentException("Not found accoundId"));
+//        return repository.findById(id)
+//                .map(mapper::toSource)
+//                .orElseThrow(() -> new IllegalArgumentException("Not found accoundId"));
+        return null;
     }
 }

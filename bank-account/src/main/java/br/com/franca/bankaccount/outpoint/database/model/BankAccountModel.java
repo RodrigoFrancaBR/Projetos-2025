@@ -5,55 +5,49 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Table(name = "bank_account")
 public class BankAccountModel {
 
-//    public BankAccountModel(Long id, BigDecimal balance, String titular, String document, String email, String telefone, BigDecimal rendaMensal, String endereco, String tipoConta) {
-//        this.id = id;
-//        this.balance = balance;
-//        this.titular = titular;
-//        this.document = document;
-//        this.email = email;
-//        this.telefone = telefone;
-//        this.rendaMensal = rendaMensal;
-//        this.endereco = endereco;
-//        this.tipoConta = tipoConta;
-//    }
-
     @Id
     @Column("id")
-    private Long id;
-    @Column("balance") // Nome da coluna exatamente como está no H2
+    private UUID id;
+    @Column("accountNumber")
+    private String accountNumber;
+    @Column("accountType")
+    private String accountType;
+    @Column("balance")
     private BigDecimal balance;
+    @Column("dailyWithdrawalLimit")
+    private BigDecimal dailyWithdrawalLimit;
+    @Column("accountHolderId")
+    private UUID accountHolderId;
 
-    @Column("titular")
-    private String titular;
+    // ver se coloca os ids das transações
 
-    @Column("document")
-    private String document;
-
-    @Column("email")
-    private String email;
-
-    @Column("telefone")
-    private String telefone;
-
-    @Column("renda_mensal")
-    private BigDecimal rendaMensal;
-
-    @Column("endereco")
-    private String endereco;
-
-    @Column("tipo_conta")
-    private String tipoConta;
-
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
     public BigDecimal getBalance() {
@@ -64,59 +58,19 @@ public class BankAccountModel {
         this.balance = balance;
     }
 
-    public String getTitular() {
-        return titular;
+    public BigDecimal getDailyWithdrawalLimit() {
+        return dailyWithdrawalLimit;
     }
 
-    public void setTitular(String titular) {
-        this.titular = titular;
+    public void setDailyWithdrawalLimit(BigDecimal dailyWithdrawalLimit) {
+        this.dailyWithdrawalLimit = dailyWithdrawalLimit;
     }
 
-    public String getDocument() {
-        return document;
+    public UUID getAccountHolderId() {
+        return accountHolderId;
     }
 
-    public void setDocument(String document) {
-        this.document = document;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public BigDecimal getRendaMensal() {
-        return rendaMensal;
-    }
-
-    public void setRendaMensal(BigDecimal rendaMensal) {
-        this.rendaMensal = rendaMensal;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getTipoConta() {
-        return tipoConta;
-    }
-
-    public void setTipoConta(String tipoConta) {
-        this.tipoConta = tipoConta;
+    public void setAccountHolderId(UUID accountHolderId) {
+        this.accountHolderId = accountHolderId;
     }
 }
